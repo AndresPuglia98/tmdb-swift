@@ -1,0 +1,6 @@
+framework module Pods_moovyApp {
+  umbrella header "Pods-moovyApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
