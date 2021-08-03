@@ -26,10 +26,10 @@ enum AuthRoute: APIRoute {
             path = "/authentication/token/new"
             params = [:]
         case .validateUser:
-            path = "/authentication/token/validate_with_login" // Configurar para que sea POST
+            path = "/authentication/token/validate_with_login" // TODO: Configurar para que sea POST
             params = [:]
         case .createSession:
-            path = "/authentication/session/new" // Configurar para que sea POST
+            path = "/authentication/session/new" // TODO: Configurar para que sea POST
             params = [:]
         }
         
