@@ -9,4 +9,5 @@ target 'moovyApp' do
   pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper'
+  pod 'Kingfisher'
 end

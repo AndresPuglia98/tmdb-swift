@@ -1,0 +1,27 @@
+//
+//  APIClientMoviesExtension.swift
+//  moovyApp
+//
+//  Created by José Andrés Puglia on 7/30/21.
+//
+
+import Alamofire
+import ObjectMapper
+
+extension APIClient {
+    
+    func fetchMoviesWithGenre(genreIdsArray: [String], page: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void)
+    {
+        requestItems(request: MovieListRoute.fetchMoviesWithGenre(genreIdsArray: genreIdsArray, page: page), responseKey: "results", onCompletion: onCompletion)
+    }
+    
+    func fetchGenres(onCompletion: @escaping (Result<[Genre], Error>) -> Void)
+    {
+        requestItems(request: GenreRoute.fetchGenres, responseKey: "genres", onCompletion: onCompletion)
+    }
+    
+    func searchMovie(movieName: String, onCompletion: @escaping (Result<[Movie], Error>) -> Void)
+    {
+        requestItems(request: MovieListRoute.searchMovie(movieName: movieName), responseKey: "results", onCompletion: onCompletion)
+    }
+}

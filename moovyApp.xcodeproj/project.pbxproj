@@ -3,14 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2DEAABE78D4C2AAB9AB46B3C /* Pods_moovyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BBA9183C7F8F0DAB2BE5E6 /* Pods_moovyApp.framework */; };
+		9013F48C26B8AFF6000493FA /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013F48A26B8AFF6000493FA /* MovieCollectionViewCell.swift */; };
+		9013F48D26B8AFF6000493FA /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9013F48B26B8AFF6000493FA /* MovieCollectionViewCell.xib */; };
+		9013F49226B8D421000493FA /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013F49026B8D421000493FA /* MoviesTableViewCell.swift */; };
+		9013F49326B8D421000493FA /* MoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9013F49126B8D421000493FA /* MoviesTableViewCell.xib */; };
+		901D7BEF26B0D01D0066D1A8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D7BED26B0D01D0066D1A8 /* APIClient.swift */; };
+		901D7BF026B0D01D0066D1A8 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D7BEE26B0D01D0066D1A8 /* APIRoute.swift */; };
+		90BA76E626B0CC0C001D1988 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BA76E526B0CC0C001D1988 /* Movie.swift */; };
+		90D93B1526B2471C008AB6DE /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D93B1426B2471C008AB6DE /* Genre.swift */; };
+		90DE874426B4C38A00FC828D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE874326B4C38A00FC828D /* HomeViewController.swift */; };
+		90DE874826B4C3B100FC828D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE874726B4C3B100FC828D /* FavoritesViewController.swift */; };
+		90DE874B26B4C3C200FC828D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE874A26B4C3C200FC828D /* SearchViewController.swift */; };
+		90DE875026B4CA9A00FC828D /* MovieListRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE874F26B4CA9A00FC828D /* MovieListRoute.swift */; };
+		90DE875326B4CE0A00FC828D /* APIClientMoviesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE875226B4CE0A00FC828D /* APIClientMoviesExtension.swift */; };
+		90DE875626B4D18700FC828D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE875526B4D18700FC828D /* Constants.swift */; };
+		90DE875926B7951E00FC828D /* GenreRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE875826B7951E00FC828D /* GenreRoute.swift */; };
+		90DE875C26B7964600FC828D /* AuthRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE875B26B7964600FC828D /* AuthRoute.swift */; };
 		90EA4A3C26AF7FCE0073D107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA4A3B26AF7FCE0073D107 /* AppDelegate.swift */; };
 		90EA4A3E26AF7FCE0073D107 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA4A3D26AF7FCE0073D107 /* SceneDelegate.swift */; };
-		90EA4A4026AF7FCE0073D107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA4A3F26AF7FCE0073D107 /* ViewController.swift */; };
 		90EA4A4326AF7FCE0073D107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90EA4A4126AF7FCE0073D107 /* Main.storyboard */; };
 		90EA4A4526AF7FCF0073D107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90EA4A4426AF7FCF0073D107 /* Assets.xcassets */; };
 		90EA4A4826AF7FCF0073D107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90EA4A4626AF7FCF0073D107 /* LaunchScreen.storyboard */; };
@@ -19,10 +34,25 @@
 /* Begin PBXFileReference section */
 		3D3A90C6245FC9B85237E7D7 /* Pods-moovyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moovyApp.debug.xcconfig"; path = "Target Support Files/Pods-moovyApp/Pods-moovyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		51BBA9183C7F8F0DAB2BE5E6 /* Pods_moovyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moovyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9013F48A26B8AFF6000493FA /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		9013F48B26B8AFF6000493FA /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		9013F49026B8D421000493FA /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
+		9013F49126B8D421000493FA /* MoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesTableViewCell.xib; sourceTree = "<group>"; };
+		901D7BED26B0D01D0066D1A8 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		901D7BEE26B0D01D0066D1A8 /* APIRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
+		90BA76E526B0CC0C001D1988 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		90D93B1426B2471C008AB6DE /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		90DE874326B4C38A00FC828D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		90DE874726B4C3B100FC828D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		90DE874A26B4C3C200FC828D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		90DE874F26B4CA9A00FC828D /* MovieListRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRoute.swift; sourceTree = "<group>"; };
+		90DE875226B4CE0A00FC828D /* APIClientMoviesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMoviesExtension.swift; sourceTree = "<group>"; };
+		90DE875526B4D18700FC828D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		90DE875826B7951E00FC828D /* GenreRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRoute.swift; sourceTree = "<group>"; };
+		90DE875B26B7964600FC828D /* AuthRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoute.swift; sourceTree = "<group>"; };
 		90EA4A3826AF7FCE0073D107 /* moovyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moovyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EA4A3B26AF7FCE0073D107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90EA4A3D26AF7FCE0073D107 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		90EA4A3F26AF7FCE0073D107 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		90EA4A4226AF7FCE0073D107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90EA4A4426AF7FCF0073D107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90EA4A4726AF7FCF0073D107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,8 +78,66 @@
 				3D3A90C6245FC9B85237E7D7 /* Pods-moovyApp.debug.xcconfig */,
 				BC9008C9D9A566A380F51774 /* Pods-moovyApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9013F48926B8AFBA000493FA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9013F48A26B8AFF6000493FA /* MovieCollectionViewCell.swift */,
+				9013F48B26B8AFF6000493FA /* MovieCollectionViewCell.xib */,
+				9013F49026B8D421000493FA /* MoviesTableViewCell.swift */,
+				9013F49126B8D421000493FA /* MoviesTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		901D7BEC26B0D01D0066D1A8 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				90DE874D26B4C55F00FC828D /* Routes */,
+				901D7BED26B0D01D0066D1A8 /* APIClient.swift */,
+				90DE875226B4CE0A00FC828D /* APIClientMoviesExtension.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		90BA76DD26B0C9D3001D1988 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				90BA76E526B0CC0C001D1988 /* Movie.swift */,
+				90D93B1426B2471C008AB6DE /* Genre.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		90BA76DE26B0C9DE001D1988 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9013F48926B8AFBA000493FA /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		90BA76DF26B0C9E8001D1988 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				90DE874326B4C38A00FC828D /* HomeViewController.swift */,
+				90DE874726B4C3B100FC828D /* FavoritesViewController.swift */,
+				90DE874A26B4C3C200FC828D /* SearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		90DE874D26B4C55F00FC828D /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				901D7BEE26B0D01D0066D1A8 /* APIRoute.swift */,
+				90DE874F26B4CA9A00FC828D /* MovieListRoute.swift */,
+				90DE875826B7951E00FC828D /* GenreRoute.swift */,
+				90DE875B26B7964600FC828D /* AuthRoute.swift */,
+			);
+			path = Routes;
 			sourceTree = "<group>";
 		};
 		90EA4A2F26AF7FCE0073D107 = {
@@ -73,13 +161,17 @@
 		90EA4A3A26AF7FCE0073D107 /* moovyApp */ = {
 			isa = PBXGroup;
 			children = (
+				901D7BEC26B0D01D0066D1A8 /* Networking */,
+				90BA76DF26B0C9E8001D1988 /* ViewControllers */,
+				90BA76DE26B0C9DE001D1988 /* Views */,
+				90BA76DD26B0C9D3001D1988 /* Models */,
 				90EA4A3B26AF7FCE0073D107 /* AppDelegate.swift */,
 				90EA4A3D26AF7FCE0073D107 /* SceneDelegate.swift */,
-				90EA4A3F26AF7FCE0073D107 /* ViewController.swift */,
 				90EA4A4126AF7FCE0073D107 /* Main.storyboard */,
 				90EA4A4426AF7FCF0073D107 /* Assets.xcassets */,
 				90EA4A4626AF7FCF0073D107 /* LaunchScreen.storyboard */,
 				90EA4A4926AF7FCF0073D107 /* Info.plist */,
+				90DE875526B4D18700FC828D /* Constants.swift */,
 			);
 			path = moovyApp;
 			sourceTree = "<group>";
@@ -125,6 +217,7 @@
 				TargetAttributes = {
 					90EA4A3726AF7FCE0073D107 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -152,8 +245,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				90EA4A4826AF7FCF0073D107 /* LaunchScreen.storyboard in Resources */,
+				9013F49326B8D421000493FA /* MoviesTableViewCell.xib in Resources */,
 				90EA4A4526AF7FCF0073D107 /* Assets.xcassets in Resources */,
 				90EA4A4326AF7FCE0073D107 /* Main.storyboard in Resources */,
+				9013F48D26B8AFF6000493FA /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,9 +301,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90EA4A4026AF7FCE0073D107 /* ViewController.swift in Sources */,
+				90DE875C26B7964600FC828D /* AuthRoute.swift in Sources */,
+				90DE875026B4CA9A00FC828D /* MovieListRoute.swift in Sources */,
+				90DE874B26B4C3C200FC828D /* SearchViewController.swift in Sources */,
+				90DE875326B4CE0A00FC828D /* APIClientMoviesExtension.swift in Sources */,
+				90BA76E626B0CC0C001D1988 /* Movie.swift in Sources */,
+				90DE874826B4C3B100FC828D /* FavoritesViewController.swift in Sources */,
 				90EA4A3C26AF7FCE0073D107 /* AppDelegate.swift in Sources */,
+				901D7BF026B0D01D0066D1A8 /* APIRoute.swift in Sources */,
+				90DE875626B4D18700FC828D /* Constants.swift in Sources */,
+				90DE874426B4C38A00FC828D /* HomeViewController.swift in Sources */,
+				9013F49226B8D421000493FA /* MoviesTableViewCell.swift in Sources */,
 				90EA4A3E26AF7FCE0073D107 /* SceneDelegate.swift in Sources */,
+				901D7BEF26B0D01D0066D1A8 /* APIClient.swift in Sources */,
+				9013F48C26B8AFF6000493FA /* MovieCollectionViewCell.swift in Sources */,
+				90D93B1526B2471C008AB6DE /* Genre.swift in Sources */,
+				90DE875926B7951E00FC828D /* GenreRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = moovyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -364,8 +473,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.moovyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -375,6 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = moovyApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -384,7 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.moovyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
