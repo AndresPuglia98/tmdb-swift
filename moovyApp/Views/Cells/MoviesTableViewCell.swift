@@ -10,16 +10,14 @@ import UIKit
 class MoviesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var moviesCollectionView: UICollectionView!
-    
     @IBOutlet weak var moviesGenreLabel: UILabel!
     
     static let identifier = "MoviesTableViewCell"
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         moviesCollectionView.register(UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
-        
+        moviesCollectionView.register(UINib(nibName: ShowMoreCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: ShowMoreCollectionViewCell.identifier)
     }
     
     override func prepareForReuse() {
@@ -32,8 +30,6 @@ class MoviesTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

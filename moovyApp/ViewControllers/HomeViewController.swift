@@ -11,59 +11,70 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var moviesTableView: UITableView!
     
-    var genres: [Genre] = []
+    var genresToShow: [Genre] = []
     
-    var moviesGenreAtIndex: [UICollectionView: Int] = [:]
-    var movieList: [Int: [Movie]] = [:]
+    var moviesWithGenreId: [UICollectionView: Int] = [:]
+    var movieLists: [Int: [Movie]] = [:]
+    var selectedMovie: Movie!
+    let moviesPerRow: Int = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonAction))
+        
         moviesTableView.dataSource = self
         moviesTableView.register(UINib(nibName: MoviesTableViewCell.identifier, bundle: nil),forCellReuseIdentifier: MoviesTableViewCell.identifier)
-        moviesTableView.reloadData()
         
-//        moviesTableView.delegate = self
+        moviesTableView.reloadData()
         
         APIClient.shared.fetchGenres { (result: Result<[Genre], Error>) in
             switch result {
             case .success(let genres):
-                self.genres = genres
                 for genre in genres {
                     if Constants.APIConstants.kGenresAtHomePage.contains(genre.name) {
+                        self.genresToShow.append(genre)
                         APIClient.shared.fetchMoviesWithGenre(genreIdsArray: [String(genre.id)], page: 1) { (result: Result<[Movie], Error>) in
                             switch result {
                             case .success(let movies):
-                                print(movies)
-                                self.movieList[genre.id] = movies
+                                self.movieLists[genre.id] = movies
+                                self.moviesTableView.reloadData()
                             case .failure(let error):
                                 print(error)
                             }
                         }
                     }
-                    self.moviesTableView.reloadData()
                 }
-                
             case .failure(let error):
                 print(error)
             }
         }
-      
     }
     
+    
+    
+    @objc func logoutButtonAction(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "sessionId")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
+        
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginNavController)
+    }
 }
+
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genres.count
+        return genresToShow.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.identifier, for: indexPath) as! MoviesTableViewCell
-        moviesGenreAtIndex[cell.moviesCollectionView] = indexPath.row
+        moviesWithGenreId[cell.moviesCollectionView] = indexPath.row
         cell.moviesCollectionView.delegate = self
         cell.moviesCollectionView.dataSource = self
         cell.moviesCollectionView.reloadData()
-        cell.configure(genre: genres[indexPath.row].name)
+        cell.configure(genre: genresToShow[indexPath.row].name)
         return cell
     }
     
@@ -71,23 +82,35 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let indexRow = moviesGenreAtIndex[collectionView] ?? 0
-        let movies = movieList[genres[indexRow].id]
-        let selectedMovie = movies?[indexPath.row] // TODO: segue
+        let indexRow = moviesWithGenreId[collectionView]!
+        let movies = movieLists[genresToShow[indexRow].id]
+        self.selectedMovie = movies?[indexPath.row]
+        self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let movieDetailsViewController = segue.destination as! MovieDetailsViewController
+        movieDetailsViewController.selectedContent = self.selectedMovie
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let indexRow = moviesGenreAtIndex[collectionView] ?? 0
-        return movieList[genres[indexRow].id]?.count ?? 0
+        return self.moviesPerRow
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
-        let indexRow = moviesGenreAtIndex[collectionView] ?? 0
-        let movies = movieList[genres[indexRow].id]
-        cell.configure(posterPath: (movies?[indexPath.row].posterPath) ?? "")
-        return cell
+        if(indexPath.row == self.moviesPerRow-1) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowMoreCollectionViewCell.identifier, for: indexPath) as! ShowMoreCollectionViewCell
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
+            let indexRow = moviesWithGenreId[collectionView]!
+            let movies = movieLists[genresToShow[indexRow].id]
+            cell.configure(posterPath: (movies?[indexPath.row].posterPath) ?? "")
+            return cell
+        }
+        
+        
     }
 }

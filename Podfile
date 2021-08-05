@@ -10,4 +10,5 @@ target 'moovyApp' do
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper'
   pod 'Kingfisher'
+  pod 'IQKeyboardManagerSwift'
 end

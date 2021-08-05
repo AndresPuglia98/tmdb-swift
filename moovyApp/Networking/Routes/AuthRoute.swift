@@ -13,7 +13,16 @@ enum AuthRoute: APIRoute {
     case validateUser(username: String, password: String, requestToken: String)
     case createSession(requestToken: String)
 
-    var method: HTTPMethod { .get }
+    var method: HTTPMethod {
+        switch self {
+        case .generateToken:
+            return .get
+        case .validateUser:
+            return .post
+        case .createSession:
+            return .post
+        }
+    }
     
     var sessionPolicy: APIRouteSessionPolicy { .publicDomain }
     
@@ -25,12 +34,18 @@ enum AuthRoute: APIRoute {
         case .generateToken:
             path = "/authentication/token/new"
             params = [:]
-        case .validateUser:
-            path = "/authentication/token/validate_with_login" // TODO: Configurar para que sea POST
-            params = [:]
-        case .createSession:
-            path = "/authentication/session/new" // TODO: Configurar para que sea POST
-            params = [:]
+            
+        case .validateUser(let username, let password, let requestToken):
+            path = "/authentication/token/validate_with_login"
+            params = [
+                "username": username,
+                "password": password,
+                "request_token": requestToken
+            ]
+            
+        case .createSession(let requestToken):
+            path = "/authentication/session/new"
+            params = ["request_token": requestToken]
         }
         
         return try self.encoded(path: path, params: params)

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-typealias JSONDictionary = [String:Any]
+typealias JSONDictionary = [String: Any]
 
 enum APIRouteSessionPolicy {
     case privateDomain, publicDomain
