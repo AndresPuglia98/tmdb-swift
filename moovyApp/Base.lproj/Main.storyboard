@@ -48,46 +48,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YU6-3P-6fE">
-                                <rect key="frame" x="10" y="123" width="394" height="56"/>
+                            <searchBar contentMode="redraw" text="" showsSearchResultsButton="YES" translucent="NO" id="YU6-3P-6fE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" red="0.50003196189922061" green="0.54571218482241879" blue="0.93580880440466319" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fdU-ay-oQZ">
-                                <rect key="frame" x="0.0" y="194" width="414" height="619"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NiR-OO-ggP">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MEu-Jm-28V">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yvx-jF-Nyc"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YU6-3P-6fE" firstAttribute="top" secondItem="Yvx-jF-Nyc" secondAttribute="top" constant="35" id="1c4-uL-Xvj"/>
-                            <constraint firstItem="Yvx-jF-Nyc" firstAttribute="trailing" secondItem="YU6-3P-6fE" secondAttribute="trailing" constant="10" id="BD5-yP-bcl"/>
-                            <constraint firstItem="Yvx-jF-Nyc" firstAttribute="bottom" secondItem="fdU-ay-oQZ" secondAttribute="bottom" id="Odi-W2-hQ2"/>
-                            <constraint firstItem="Yvx-jF-Nyc" firstAttribute="trailing" secondItem="fdU-ay-oQZ" secondAttribute="trailing" id="Tqd-HC-xkm"/>
-                            <constraint firstItem="fdU-ay-oQZ" firstAttribute="top" secondItem="YU6-3P-6fE" secondAttribute="bottom" constant="15" id="Urq-56-BKm"/>
-                            <constraint firstItem="YU6-3P-6fE" firstAttribute="leading" secondItem="Yvx-jF-Nyc" secondAttribute="leading" constant="10" id="fG7-Cg-Rqh"/>
-                            <constraint firstItem="fdU-ay-oQZ" firstAttribute="leading" secondItem="Yvx-jF-Nyc" secondAttribute="leading" id="sA3-96-SZX"/>
+                            <constraint firstItem="Yvx-jF-Nyc" firstAttribute="bottom" secondItem="NiR-OO-ggP" secondAttribute="bottom" id="1LC-HV-SUa"/>
+                            <constraint firstItem="NiR-OO-ggP" firstAttribute="top" secondItem="YU6-3P-6fE" secondAttribute="bottom" id="DGR-lu-drm"/>
+                            <constraint firstItem="NiR-OO-ggP" firstAttribute="leading" secondItem="Yvx-jF-Nyc" secondAttribute="leading" id="SCq-m7-TVT"/>
+                            <constraint firstItem="Yvx-jF-Nyc" firstAttribute="trailing" secondItem="NiR-OO-ggP" secondAttribute="trailing" id="fh9-55-9ct"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8z2-vH-7DN"/>
                     <connections>
-                        <outlet property="moviesSearchBar" destination="YU6-3P-6fE" id="LDc-oe-tGu"/>
-                        <outlet property="searchedResultsCollectionView" destination="fdU-ay-oQZ" id="zTE-VR-jqg"/>
+                        <outlet property="moviesSearchBar" destination="YU6-3P-6fE" id="qRV-lU-tdA"/>
+                        <outlet property="searchedResultsTableView" destination="NiR-OO-ggP" id="o3K-1u-5Qa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CUN-tu-SCD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-365" y="1720"/>
+            <point key="canvasLocation" x="-365.21739130434787" y="1719.6428571428571"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="ZxS-Nn-3qY">

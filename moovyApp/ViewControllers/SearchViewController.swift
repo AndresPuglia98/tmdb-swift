@@ -10,43 +10,56 @@ import UIKit
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var moviesSearchBar: UISearchBar!
-    @IBOutlet weak var searchedResultsCollectionView: UICollectionView!
+    @IBOutlet weak var searchedResultsTableView: UITableView!
+    
     var searchResults: [Movie] = []
+    var debounce_timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchedResultsCollectionView.dataSource = self
+        searchedResultsTableView.dataSource = self
         moviesSearchBar.delegate = self
-        searchedResultsCollectionView.register(UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        searchedResultsTableView.register(UINib(nibName: PresentMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PresentMovieTableViewCell.identifier)
     }
 }
 
 extension SearchViewController : UISearchBarDelegate {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchText = self.moviesSearchBar.text, !searchText.isEmpty {
-            APIClient.shared.searchMovie(movieName: searchText) { (result: Result<[Movie], Error>) in
-                switch result {
-                case .success(let movies):
-                    print(movies)
-                    self.searchResults = movies
-                    self.searchedResultsCollectionView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
+            debounce_timer?.invalidate()
+            debounce_timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                APIClient.shared.searchMovie(movieName: searchText, onCompletion: self.handleSearchResponse)
             }
+        }
+        if(searchText.isEmpty) {
+            self.searchResults = []
+            self.searchedResultsTableView.reloadData()
+        }
+    }
+    
+    func handleSearchResponse(result: Result<[Movie], Error>) -> Void {
+        switch result {
+        case .success(let movies):
+            self.searchResults = movies
+            self.searchedResultsTableView.reloadData()
+            
+        case .failure(let error):
+            print(error)
         }
     }
 }
 
-extension SearchViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension SearchViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
-        cell.configure(posterPath: (searchResults[indexPath.row].posterPath) ?? "")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PresentMovieTableViewCell.identifier, for: indexPath) as! PresentMovieTableViewCell
+        let movie = searchResults[indexPath.row]
+        cell.configure(movieTitle: movie.title, rating: movie.rating, posterPath: (movie.posterPath) ?? "")
         return cell
     }
+    
+    
 }

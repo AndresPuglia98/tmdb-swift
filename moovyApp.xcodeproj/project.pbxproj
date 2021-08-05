@@ -16,6 +16,8 @@
 		9013F49C26B8F5BB000493FA /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013F49B26B8F5BB000493FA /* MovieDetailsViewController.swift */; };
 		901D7BEF26B0D01D0066D1A8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D7BED26B0D01D0066D1A8 /* APIClient.swift */; };
 		901D7BF026B0D01D0066D1A8 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D7BEE26B0D01D0066D1A8 /* APIRoute.swift */; };
+		9030A79626BC8BA500659457 /* PresentMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030A79426BC8BA500659457 /* PresentMovieTableViewCell.swift */; };
+		9030A79726BC8BA500659457 /* PresentMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9030A79526BC8BA500659457 /* PresentMovieTableViewCell.xib */; };
 		9067756C26B9F1D300DE045D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067756B26B9F1D300DE045D /* LoginViewController.swift */; };
 		9067756F26BA0C5500DE045D /* MoviesByGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9067756E26BA0C5500DE045D /* MoviesByGenreViewController.swift */; };
 		90A4FAB226BB414E000CAF41 /* RequestTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4FAB126BB414E000CAF41 /* RequestTokenResponse.swift */; };
@@ -50,6 +52,8 @@
 		9013F49B26B8F5BB000493FA /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		901D7BED26B0D01D0066D1A8 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		901D7BEE26B0D01D0066D1A8 /* APIRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
+		9030A79426BC8BA500659457 /* PresentMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentMovieTableViewCell.swift; sourceTree = "<group>"; };
+		9030A79526BC8BA500659457 /* PresentMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresentMovieTableViewCell.xib; sourceTree = "<group>"; };
 		9067756B26B9F1D300DE045D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9067756E26BA0C5500DE045D /* MoviesByGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesByGenreViewController.swift; sourceTree = "<group>"; };
 		90A4FAB126BB414E000CAF41 /* RequestTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTokenResponse.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				9013F49126B8D421000493FA /* MoviesTableViewCell.xib */,
 				90A4FAC526BB69AD000CAF41 /* ShowMoreCollectionViewCell.swift */,
 				90A4FAC626BB69AD000CAF41 /* ShowMoreCollectionViewCell.xib */,
+				9030A79426BC8BA500659457 /* PresentMovieTableViewCell.swift */,
+				9030A79526BC8BA500659457 /* PresentMovieTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				90EA4A4326AF7FCE0073D107 /* Main.storyboard in Resources */,
 				90A4FAC826BB69AD000CAF41 /* ShowMoreCollectionViewCell.xib in Resources */,
 				9013F48D26B8AFF6000493FA /* MovieCollectionViewCell.xib in Resources */,
+				9030A79726BC8BA500659457 /* PresentMovieTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +347,7 @@
 				901D7BF026B0D01D0066D1A8 /* APIRoute.swift in Sources */,
 				90DE875626B4D18700FC828D /* Constants.swift in Sources */,
 				90DE874426B4C38A00FC828D /* HomeViewController.swift in Sources */,
+				9030A79626BC8BA500659457 /* PresentMovieTableViewCell.swift in Sources */,
 				90A4FAB626BB433D000CAF41 /* SessionTokenResponse.swift in Sources */,
 				9013F49226B8D421000493FA /* MoviesTableViewCell.swift in Sources */,
 				90EA4A3E26AF7FCE0073D107 /* SceneDelegate.swift in Sources */,
