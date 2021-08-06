@@ -10,11 +10,17 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
     
     @IBOutlet weak var moviePosterImageView: UIImageView!
+   
     @IBOutlet weak var movieTitleLabel: UILabel!
+    
     @IBOutlet weak var movieTaglineLabel: UILabel!
+    
     @IBOutlet weak var movieStatusLabel: UILabel!
+    
     @IBOutlet weak var movieReleaseDateLabel: UILabel!
+    
     @IBOutlet weak var similarMoviesTableView: UITableView!
+    
     
     var selectedMovie: Movie!
     var similarMovies: [Movie] = []
