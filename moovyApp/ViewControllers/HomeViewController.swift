@@ -95,7 +95,6 @@ extension HomeViewController: UICollectionViewDelegate {
             self.selectedMovie = movies?[indexPath.row]
             self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

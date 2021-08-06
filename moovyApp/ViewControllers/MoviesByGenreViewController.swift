@@ -18,15 +18,16 @@ class MoviesByGenreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        genreNameLabel.text = selectedGenre.name
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        genreNameLabel.text = selectedGenre.name
+        
         moviesByGenreTableView.dataSource = self
         moviesByGenreTableView.register(UINib(nibName: PresentMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PresentMovieTableViewCell.identifier)
+        
         APIClient.shared.fetchMoviesWithGenre(genreIdsArray: [String(selectedGenre.id)], page: 1, onCompletion: handleMoviesByGenreResponse)
     }
     

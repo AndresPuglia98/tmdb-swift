@@ -12,14 +12,30 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var searchedResultsTableView: UITableView!
     
+    var selectedMovie: Movie!
     var searchResults: [Movie] = []
     var debounce_timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchedResultsTableView.dataSource = self
         moviesSearchBar.delegate = self
+        searchedResultsTableView.dataSource = self
+        searchedResultsTableView.delegate = self
         searchedResultsTableView.register(UINib(nibName: PresentMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PresentMovieTableViewCell.identifier)
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedMovie = searchResults[indexPath.row]
+        self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowMovieDetailSegue" {
+            let movieDetailsViewController = segue.destination as! MovieDetailsViewController
+            movieDetailsViewController.selectedMovie = self.selectedMovie
+        }
     }
 }
 

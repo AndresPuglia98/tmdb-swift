@@ -41,6 +41,7 @@
                     <navigationItem key="navigationItem" id="tQS-dx-xZH"/>
                     <connections>
                         <outlet property="favoriteMoviesTableView" destination="dRX-oV-O2l" id="VqI-eV-kWd"/>
+                        <segue destination="ero-X2-MwQ" kind="showDetail" identifier="ShowMovieDetailSegue" id="Hfw-zM-NLv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7U4-Ro-dC3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -81,6 +82,7 @@
                     <connections>
                         <outlet property="moviesSearchBar" destination="YU6-3P-6fE" id="qRV-lU-tdA"/>
                         <outlet property="searchedResultsTableView" destination="NiR-OO-ggP" id="o3K-1u-5Qa"/>
+                        <segue destination="ero-X2-MwQ" kind="showDetail" identifier="ShowMovieDetailSegue" id="eDe-ee-K2p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CUN-tu-SCD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWM-WB-heG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1691.304347826087" y="2466.9642857142858"/>
+            <point key="canvasLocation" x="-449" y="2744"/>
         </scene>
         <!--Movies By Genre View Controller-->
         <scene sceneID="3YE-JF-AfZ">
@@ -241,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="858-ab-ckx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-884" y="2467"/>
+            <point key="canvasLocation" x="-1703" y="2592"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0vk-Z4-GBN">
@@ -397,6 +399,9 @@
             <point key="canvasLocation" x="-3610" y="159"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Hfw-zM-NLv"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="cinema" width="30" height="30"/>
         <image name="heart" width="24" height="24"/>
