@@ -19,8 +19,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         moviesSearchBar.delegate = self
-        searchedResultsTableView.dataSource = self
         searchedResultsTableView.delegate = self
+        searchedResultsTableView.dataSource = self
         searchedResultsTableView.register(UINib(nibName: PresentMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PresentMovieTableViewCell.identifier)
     }
 }

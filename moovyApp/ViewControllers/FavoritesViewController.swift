@@ -11,11 +11,13 @@ class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var favoriteMoviesTableView: UITableView!
     
+    var selectedMovie: Movie!
     var favoriteMovies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        favoriteMoviesTableView.delegate = self
         favoriteMoviesTableView.dataSource = self
         favoriteMoviesTableView.register(UINib(nibName: PresentMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PresentMovieTableViewCell.identifier)
         APIClient.shared.fetchFavoriteMovies(onCompletion: self.handleFavoriteMoviesResponse)
@@ -29,6 +31,20 @@ class FavoritesViewController: UIViewController {
 
         case .failure(let error):
             print(error)
+        }
+    }
+}
+
+extension FavoritesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedMovie = favoriteMovies[indexPath.row]
+        self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowMovieDetailSegue" {
+            let movieDetailsViewController = segue.destination as! MovieDetailsViewController
+            movieDetailsViewController.selectedMovie = self.selectedMovie
         }
     }
 }
