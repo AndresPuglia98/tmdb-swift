@@ -25,7 +25,7 @@ extension APIRoute {
     
     var encoding: Alamofire.ParameterEncoding {
         switch self.method {
-        case .get, .delete, .patch: return URLEncoding.default
+        case .get, .post, .delete, .patch: return URLEncoding.default
         default: return JSONEncoding.default
         }
     }
