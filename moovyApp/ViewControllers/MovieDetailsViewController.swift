@@ -53,4 +53,15 @@ class MovieDetailsViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func addFavoriteButtonAction(_ sender: Any) {
+        APIClient.shared.addFavoriteMovie(movieId: selectedContent.id) { (result: Result<MarkFavoriteMovieResponse, Error>) in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

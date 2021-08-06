@@ -35,7 +35,7 @@ extension APIRoute {
         var params = params
         var url = URL(string: baseURL + encodedPath)!
             switch self.method {
-            case .get, .delete, .patch:
+            case .get, .post, .delete, .patch:
                 if sessionPolicy == .privateDomain {
                     params["session_id"] = UserDefaults.standard.object(forKey: "sessionId")
                 }
