@@ -65,6 +65,7 @@ class MovieDetailsViewController: UIViewController {
         APIClient.shared.addFavoriteMovie(movieId: selectedMovie.id) { (result: Result<MarkFavoriteMovieResponse, Error>) in
             switch result {
             case .success:
+                NotificationCenter.default.post(name: FavoritesViewController.notificationName, object: nil, userInfo: ["newFavoriteMovie": self.selectedMovie!])
                 print("Added \(self.selectedMovie.title) to favorites")
             case .failure(let error):
                 print(error)
