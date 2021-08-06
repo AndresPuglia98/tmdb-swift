@@ -31,7 +31,6 @@ class FavoritesViewController: UIViewController {
             print(error)
         }
     }
-    
 }
 
 extension FavoritesViewController: UITableViewDataSource {
@@ -45,6 +44,4 @@ extension FavoritesViewController: UITableViewDataSource {
         cell.configure(movieTitle: movie.title, rating: movie.rating, posterPath: (movie.posterPath) ?? "")
         return cell
     }
-    
-    
 }
