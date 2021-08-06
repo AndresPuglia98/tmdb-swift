@@ -15,7 +15,7 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieStatusLabel: UILabel!
     @IBOutlet weak var movieReleaseDateLabel: UILabel!
     
-    var selectedContent: Movie!
+    var selectedMovie: Movie!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +25,29 @@ class MovieDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if selectedContent.posterPath != nil {
-            let url = URL(string: "\(Constants.APIConstants.kBaseImageURL)\(selectedContent.posterPath ?? "")")
+        if selectedMovie.posterPath != nil {
+            let url = URL(string: "\(Constants.APIConstants.kBaseImageURL)\(selectedMovie.posterPath ?? "")")
             moviePosterImageView.kf.setImage(with: url)
         } else {
             moviePosterImageView.image = UIImage(named: "defaultPoster")
         }
     
-        movieTitleLabel.text = selectedContent.title
+        movieTitleLabel.text = selectedMovie.title
         if (movieTitleLabel.text?.isEmpty)! {
             movieTitleLabel.text = Constants.DefaultTexts.kDefaultTitle
         }
         
-        movieTaglineLabel.text = selectedContent.tagline
+        movieTaglineLabel.text = selectedMovie.tagline
         if (movieTaglineLabel.text == nil) {
             movieTaglineLabel.text = Constants.DefaultTexts.kDefaultTagline
         }
         
-        movieStatusLabel.text = selectedContent.status
+        movieStatusLabel.text = selectedMovie.status
         if (movieStatusLabel.text == nil) {
             movieStatusLabel.text = Constants.DefaultTexts.kDefaultStatus
         }
         
-        movieReleaseDateLabel.text = "Release date: \(selectedContent.releaseDate)"
+        movieReleaseDateLabel.text = "Release date: \(selectedMovie.releaseDate)"
         if (movieReleaseDateLabel.text?.isEmpty)!{
             movieReleaseDateLabel.text = Constants.DefaultTexts.kDefaultReleaseDate
         }
@@ -55,7 +55,7 @@ class MovieDetailsViewController: UIViewController {
     }
     
     @IBAction func addFavoriteButtonAction(_ sender: Any) {
-        APIClient.shared.addFavoriteMovie(movieId: selectedContent.id) { (result: Result<MarkFavoriteMovieResponse, Error>) in
+        APIClient.shared.addFavoriteMovie(movieId: selectedMovie.id) { (result: Result<MarkFavoriteMovieResponse, Error>) in
             switch result {
             case .success(let response):
                 print(response)

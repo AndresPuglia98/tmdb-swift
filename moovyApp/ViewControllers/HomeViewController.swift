@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     var genresToShow: [Genre] = []
     var moviesWithGenreId: [UICollectionView: Int] = [:]
     var movieListsToShow: [Int: [Movie]] = [:]
+    var selectedGenre: Genre!
     var selectedMovie: Movie!
     let moviesPerRow: Int = 10
     
@@ -86,13 +87,26 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let indexRow = moviesWithGenreId[collectionView]!
         let movies = movieListsToShow[genresToShow[indexRow].id]
-        self.selectedMovie = movies?[indexPath.row]
-        self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
+        if indexPath.row == moviesPerRow - 1 {
+            self.selectedGenre = genresToShow[indexRow]
+            self.performSegue(withIdentifier: "ShowMoreSegue", sender: self)
+        }
+        else {
+            self.selectedMovie = movies?[indexPath.row]
+            self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let movieDetailsViewController = segue.destination as! MovieDetailsViewController
-        movieDetailsViewController.selectedContent = self.selectedMovie
+        if segue.identifier == "ShowMoreSegue" {
+            let moviesByGenreViewController = segue.destination as! MoviesByGenreViewController
+            moviesByGenreViewController.selectedGenre = self.selectedGenre
+        }
+        if segue.identifier == "ShowMovieDetailSegue" {
+            let movieDetailsViewController = segue.destination as! MovieDetailsViewController
+            movieDetailsViewController.selectedMovie = self.selectedMovie
+        }
     }
 }
 
@@ -100,7 +114,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.moviesPerRow
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if(indexPath.row == self.moviesPerRow-1) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShowMoreCollectionViewCell.identifier, for: indexPath) as! ShowMoreCollectionViewCell

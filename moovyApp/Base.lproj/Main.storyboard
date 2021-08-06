@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-oV-O2l">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRX-oV-O2l">
                                 <rect key="frame" x="0.0" y="142" width="414" height="671"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -115,7 +115,7 @@
                     <connections>
                         <outlet property="moviesTableView" destination="T7I-GI-Cgb" id="a36-bb-QaJ"/>
                         <segue destination="ero-X2-MwQ" kind="showDetail" identifier="ShowMovieDetailSegue" id="abZ-4s-Fp5"/>
-                        <segue destination="56M-Dx-Z1Y" kind="show" identifier="ShowMoreViewController" id="tci-AT-rgk"/>
+                        <segue destination="56M-Dx-Z1Y" kind="show" identifier="ShowMoreSegue" id="tci-AT-rgk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbZ-dc-TMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,40 +202,46 @@
             </objects>
             <point key="canvasLocation" x="-1691.304347826087" y="2466.9642857142858"/>
         </scene>
-        <!--View Controller-->
+        <!--Movies By Genre View Controller-->
         <scene sceneID="3YE-JF-AfZ">
             <objects>
-                <viewController id="56M-Dx-Z1Y" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoviesByGenreViewController" id="56M-Dx-Z1Y" customClass="MoviesByGenreViewController" customModule="moovyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fem-GJ-o6R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hDG-Mg-Eaq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kBv-a8-Oao">
+                                <rect key="frame" x="0.0" y="142" width="414" height="671"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="isz-Qv-vhn">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2g-x7-PsU">
+                                <rect key="frame" x="10" y="98" width="404" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wym-Ba-eRN"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hDG-Mg-Eaq" firstAttribute="top" secondItem="wym-Ba-eRN" secondAttribute="top" id="Jm7-KS-wMW"/>
-                            <constraint firstItem="wym-Ba-eRN" firstAttribute="bottom" secondItem="hDG-Mg-Eaq" secondAttribute="bottom" id="Yc4-VY-dAB"/>
-                            <constraint firstItem="hDG-Mg-Eaq" firstAttribute="leading" secondItem="wym-Ba-eRN" secondAttribute="leading" id="akO-fH-TOT"/>
-                            <constraint firstItem="wym-Ba-eRN" firstAttribute="trailing" secondItem="hDG-Mg-Eaq" secondAttribute="trailing" id="ljE-AW-MY9"/>
+                            <constraint firstItem="D2g-x7-PsU" firstAttribute="leading" secondItem="wym-Ba-eRN" secondAttribute="leading" constant="10" id="CIP-fA-hai"/>
+                            <constraint firstItem="wym-Ba-eRN" firstAttribute="trailing" secondItem="kBv-a8-Oao" secondAttribute="trailing" id="CY4-yN-J2U"/>
+                            <constraint firstItem="wym-Ba-eRN" firstAttribute="bottom" secondItem="kBv-a8-Oao" secondAttribute="bottom" id="IWA-HY-saX"/>
+                            <constraint firstItem="D2g-x7-PsU" firstAttribute="top" secondItem="wym-Ba-eRN" secondAttribute="top" constant="10" id="USa-HZ-0EQ"/>
+                            <constraint firstItem="wym-Ba-eRN" firstAttribute="trailing" secondItem="D2g-x7-PsU" secondAttribute="trailing" id="Z4E-i6-eMV"/>
+                            <constraint firstItem="kBv-a8-Oao" firstAttribute="leading" secondItem="wym-Ba-eRN" secondAttribute="leading" id="cJp-D4-9sk"/>
+                            <constraint firstItem="kBv-a8-Oao" firstAttribute="top" secondItem="D2g-x7-PsU" secondAttribute="bottom" constant="5" id="idl-P5-4yq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lde-Co-HWZ"/>
+                    <connections>
+                        <outlet property="genreNameLabel" destination="D2g-x7-PsU" id="ioY-wb-zHX"/>
+                        <outlet property="moviesByGenreTableView" destination="kBv-a8-Oao" id="Zg7-h3-3fZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="858-ab-ckx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901" y="2467"/>
+            <point key="canvasLocation" x="-884" y="2467"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0vk-Z4-GBN">
