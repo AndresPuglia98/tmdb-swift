@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
     
     var selectedMovie: Movie!
     var searchResults: [Movie] = []
-    var debounce_timer: Timer?
+    var debounceTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,8 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchText = self.moviesSearchBar.text, !searchText.isEmpty {
-            debounce_timer?.invalidate()
-            debounce_timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+            debounceTimer?.invalidate()
+            debounceTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
                 APIClient.shared.searchMovie(movieName: searchText, onCompletion: self.handleSearchResponse)
             }
         }
