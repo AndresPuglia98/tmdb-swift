@@ -257,11 +257,12 @@
                     <connections>
                         <outlet property="genreNameLabel" destination="D2g-x7-PsU" id="ioY-wb-zHX"/>
                         <outlet property="moviesByGenreTableView" destination="kBv-a8-Oao" id="Zg7-h3-3fZ"/>
+                        <segue destination="ero-X2-MwQ" kind="showDetail" id="kTX-E4-hAO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="858-ab-ckx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1703" y="2592"/>
+            <point key="canvasLocation" x="-1732" y="2744"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0vk-Z4-GBN">
@@ -282,7 +283,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-Fh-rH7">
                                 <rect key="frame" x="20" y="382" width="374" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5F-zp-8Cz">
                                 <rect key="frame" x="178" y="496" width="58" height="41"/>
@@ -418,7 +419,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="abZ-4s-Fp5"/>
+        <segue reference="kTX-E4-hAO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cinema" width="30" height="30"/>
