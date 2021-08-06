@@ -127,7 +127,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="78M-di-ABJ">
             <objects>
-                <viewController id="ero-X2-MwQ" customClass="MovieDetailsViewController" customModule="moovyApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="ero-X2-MwQ" customClass="MovieDetailsViewController" customModule="moovyApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wvI-4i-8HF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,13 +151,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBW-id-hkk">
-                                <rect key="frame" x="20" y="524.5" width="374" height="27.5"/>
+                                <rect key="frame" x="20" y="514.5" width="374" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULD-4z-kGi">
-                                <rect key="frame" x="20" y="572" width="374" height="27.5"/>
+                                <rect key="frame" x="20" y="552" width="374" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -169,6 +169,10 @@
                                     <action selector="addFavoriteButtonAction:" destination="ero-X2-MwQ" eventType="touchUpInside" id="S6p-vq-YDf"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="miQ-B9-QMB">
+                                <rect key="frame" x="10" y="599.5" width="394" height="198.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Ly-pd-nBy"/>
                         <color key="backgroundColor" red="0.14316976547350202" green="0.17855757307407416" blue="0.59304161269430056" alpha="0.94910871478873238" colorSpace="custom" customColorSpace="displayP3"/>
@@ -176,18 +180,22 @@
                             <constraint firstItem="kwJ-E8-O5e" firstAttribute="leading" secondItem="Ah8-W9-cMR" secondAttribute="trailing" constant="-50" id="0lh-Vj-Ew3"/>
                             <constraint firstItem="zBW-id-hkk" firstAttribute="leading" secondItem="7Ly-pd-nBy" secondAttribute="leading" constant="20" id="0za-91-nAZ"/>
                             <constraint firstItem="ULD-4z-kGi" firstAttribute="leading" secondItem="7Ly-pd-nBy" secondAttribute="leading" constant="20" id="5gW-LT-Y2j"/>
-                            <constraint firstItem="zBW-id-hkk" firstAttribute="top" secondItem="4Di-LT-Mnx" secondAttribute="bottom" constant="20" id="7P5-PA-Dkn"/>
+                            <constraint firstItem="zBW-id-hkk" firstAttribute="top" secondItem="4Di-LT-Mnx" secondAttribute="bottom" constant="10" id="7P5-PA-Dkn"/>
                             <constraint firstItem="7Ly-pd-nBy" firstAttribute="trailing" secondItem="Ah8-W9-cMR" secondAttribute="trailing" id="9bD-jn-nZ8"/>
                             <constraint firstItem="7Ly-pd-nBy" firstAttribute="trailing" secondItem="4Di-LT-Mnx" secondAttribute="trailing" constant="20" id="I2x-di-eo9"/>
                             <constraint firstItem="Ah8-W9-cMR" firstAttribute="top" secondItem="wvI-4i-8HF" secondAttribute="top" id="JOR-SZ-56V"/>
                             <constraint firstItem="7Ly-pd-nBy" firstAttribute="trailing" secondItem="uTy-oU-RW2" secondAttribute="trailing" constant="20" id="NFZ-dw-AP1"/>
+                            <constraint firstItem="7Ly-pd-nBy" firstAttribute="bottom" secondItem="miQ-B9-QMB" secondAttribute="bottom" constant="10" id="O3z-u9-OE6"/>
                             <constraint firstItem="Ah8-W9-cMR" firstAttribute="leading" secondItem="7Ly-pd-nBy" secondAttribute="leading" id="OAg-ec-H4O"/>
                             <constraint firstItem="7Ly-pd-nBy" firstAttribute="trailing" secondItem="zBW-id-hkk" secondAttribute="trailing" constant="20" id="PoX-wu-LyE"/>
                             <constraint firstItem="4Di-LT-Mnx" firstAttribute="top" secondItem="uTy-oU-RW2" secondAttribute="bottom" constant="20" id="RcD-5B-xpk"/>
                             <constraint firstItem="kwJ-E8-O5e" firstAttribute="bottom" secondItem="Ah8-W9-cMR" secondAttribute="bottom" constant="-10" id="TyB-rm-mdy"/>
                             <constraint firstItem="uTy-oU-RW2" firstAttribute="top" secondItem="Ah8-W9-cMR" secondAttribute="bottom" constant="20" id="Uby-NO-Hbq"/>
+                            <constraint firstItem="miQ-B9-QMB" firstAttribute="leading" secondItem="7Ly-pd-nBy" secondAttribute="leading" constant="10" id="Uib-5Z-Fp5"/>
+                            <constraint firstItem="miQ-B9-QMB" firstAttribute="top" secondItem="ULD-4z-kGi" secondAttribute="bottom" constant="20" id="Vd9-Gj-hOk"/>
+                            <constraint firstItem="7Ly-pd-nBy" firstAttribute="trailing" secondItem="miQ-B9-QMB" secondAttribute="trailing" constant="10" id="baS-4F-KM3"/>
                             <constraint firstItem="7Ly-pd-nBy" firstAttribute="trailing" secondItem="ULD-4z-kGi" secondAttribute="trailing" constant="20" id="iAJ-kg-34o"/>
-                            <constraint firstItem="ULD-4z-kGi" firstAttribute="top" secondItem="zBW-id-hkk" secondAttribute="bottom" constant="20" id="lnA-Ty-WJd"/>
+                            <constraint firstItem="ULD-4z-kGi" firstAttribute="top" secondItem="zBW-id-hkk" secondAttribute="bottom" constant="10" id="lnA-Ty-WJd"/>
                             <constraint firstItem="uTy-oU-RW2" firstAttribute="leading" secondItem="7Ly-pd-nBy" secondAttribute="leading" constant="20" id="mot-yc-pU4"/>
                             <constraint firstItem="4Di-LT-Mnx" firstAttribute="leading" secondItem="7Ly-pd-nBy" secondAttribute="leading" constant="20" id="vsN-UJ-9KX"/>
                         </constraints>
@@ -198,11 +206,21 @@
                         <outlet property="movieStatusLabel" destination="zBW-id-hkk" id="iIk-1K-Gek"/>
                         <outlet property="movieTaglineLabel" destination="4Di-LT-Mnx" id="lMw-eb-13J"/>
                         <outlet property="movieTitleLabel" destination="uTy-oU-RW2" id="eN4-Fa-xZ2"/>
+                        <outlet property="similarMoviesTableView" destination="miQ-B9-QMB" id="QOP-7f-b7F"/>
+                        <segue destination="i7Y-eD-lPr" kind="showDetail" identifier="ShowMovieDetailSegue" id="8aD-9d-hVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWM-WB-heG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-449" y="2744"/>
+        </scene>
+        <!--MovieDetailsViewController-->
+        <scene sceneID="eOz-tb-1y6">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="MovieDetailsViewController" id="i7Y-eD-lPr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwQ-V7-pxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-449" y="3193"/>
         </scene>
         <!--Movies By Genre View Controller-->
         <scene sceneID="3YE-JF-AfZ">
@@ -400,7 +418,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hfw-zM-NLv"/>
+        <segue reference="abZ-4s-Fp5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cinema" width="30" height="30"/>

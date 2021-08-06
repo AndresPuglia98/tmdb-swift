@@ -13,10 +13,11 @@ enum MovieListRoute: APIRoute {
     case searchMovie(movieName: String)
     case fetchFavoriteMovies
     case addFavoriteMovie(movieId: Int)
+    case fetchSimilarMovies(movieId: Int)
     
     var sessionPolicy: APIRouteSessionPolicy {
         switch self {
-        case .fetchMoviesWithGenre, .searchMovie:
+        case .fetchMoviesWithGenre, .searchMovie, .fetchSimilarMovies:
             return .publicDomain
         case .fetchFavoriteMovies, .addFavoriteMovie:
             return .privateDomain
@@ -25,7 +26,7 @@ enum MovieListRoute: APIRoute {
     
     var method: HTTPMethod {
         switch self {
-        case .fetchMoviesWithGenre, .searchMovie, .fetchFavoriteMovies:
+        case .fetchMoviesWithGenre, .searchMovie, .fetchFavoriteMovies, .fetchSimilarMovies:
             return .get
         case .addFavoriteMovie:
             return .post
@@ -59,6 +60,10 @@ enum MovieListRoute: APIRoute {
                 "media_id": movieId,
                 "favorite": true
             ]
+        
+        case .fetchSimilarMovies(let movieId):
+            path = "/movie/\(String(movieId))/similar"
+            params = [:]
         }
         
         return try self.encoded(path: path, params: params)

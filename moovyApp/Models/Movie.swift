@@ -18,7 +18,7 @@ struct Movie: ImmutableMappable {
     let rating: Double
     var tagline: String? = nil
     var status: String? = nil
-    let releaseDate: String
+    var releaseDate: String? = nil
     
     init(map: Map) throws {
         self.id = try map.value(Keys.id.rawValue)
@@ -29,7 +29,7 @@ struct Movie: ImmutableMappable {
         self.rating = try map.value(Keys.vote_average.rawValue)
         self.tagline = try? map.value(Keys.tagline.rawValue)
         self.status = try? map.value(Keys.status.rawValue)
-        self.releaseDate = try map.value(Keys.release_date.rawValue)
+        self.releaseDate = try? map.value(Keys.release_date.rawValue)
     }
     
     enum Keys: String {

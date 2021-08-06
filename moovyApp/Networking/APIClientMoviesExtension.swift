@@ -29,4 +29,8 @@ extension APIClient {
     func addFavoriteMovie(movieId: Int, onCompletion: @escaping (Result<MarkFavoriteMovieResponse, Error>) -> Void) {
         requestItem(request: MovieListRoute.addFavoriteMovie(movieId: movieId), onCompletion: onCompletion)
     }
+    
+    func fetchSimilarMovies(movieId: Int, onCompletion: @escaping (Result<[Movie], Error>) -> Void) {
+        requestItems(request: MovieListRoute.fetchSimilarMovies(movieId: movieId), responseKey: "results", onCompletion: onCompletion)
+    }
 }
