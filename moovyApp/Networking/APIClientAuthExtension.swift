@@ -10,18 +10,15 @@ import ObjectMapper
 
 extension APIClient {
     
-    func generateToken(onCompletion: @escaping (Result<RequestTokenResponse, Error>) -> Void)
-    {
+    func generateToken(onCompletion: @escaping (Result<RequestTokenResponse, Error>) -> Void) {
         requestItem(request: AuthRoute.generateToken, onCompletion: onCompletion)
     }
     
-    func validateUser(username: String, password: String, requestToken: String, onCompletion: @escaping (Result<RequestTokenResponse, Error>) -> Void)
-    {
+    func validateUser(username: String, password: String, requestToken: String, onCompletion: @escaping (Result<RequestTokenResponse, Error>) -> Void) {
         requestItem(request: AuthRoute.validateUser(username: username, password: password, requestToken: requestToken), onCompletion: onCompletion)
     }
     
-    func createSession(requestToken: String, onCompletion: @escaping (Result<SessionTokenResponse, Error>) -> Void)
-    {
+    func createSession(requestToken: String, onCompletion: @escaping (Result<SessionTokenResponse, Error>) -> Void) {
         requestItem(request: AuthRoute.createSession(requestToken: requestToken), onCompletion: onCompletion)
     }
 }

@@ -31,6 +31,7 @@ extension SearchViewController : UISearchBarDelegate {
                 APIClient.shared.searchMovie(movieName: searchText, onCompletion: self.handleSearchResponse)
             }
         }
+        
         if(searchText.isEmpty) {
             self.searchResults = []
             self.searchedResultsTableView.reloadData()
@@ -42,7 +43,7 @@ extension SearchViewController : UISearchBarDelegate {
         case .success(let movies):
             self.searchResults = movies
             self.searchedResultsTableView.reloadData()
-            
+
         case .failure(let error):
             print(error)
         }
@@ -60,6 +61,4 @@ extension SearchViewController: UITableViewDataSource{
         cell.configure(movieTitle: movie.title, rating: movie.rating, posterPath: (movie.posterPath) ?? "")
         return cell
     }
-    
-    
 }

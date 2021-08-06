@@ -23,8 +23,12 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(posterPath: String) {
-        let url = URL(string: "\(Constants.APIConstants.kBaseImageURL)\(posterPath)")
-        moviePosterImageView.kf.setImage(with: url)
+        if(!posterPath.isEmpty) {
+            let url = URL(string: "\(Constants.APIConstants.kBaseImageURL)\(posterPath)")
+            moviePosterImageView.kf.setImage(with: url)
+        } else {
+            moviePosterImageView.image = UIImage(named: "defaultPoster")
+        }
     }
 
 }

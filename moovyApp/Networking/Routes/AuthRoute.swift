@@ -13,18 +13,15 @@ enum AuthRoute: APIRoute {
     case validateUser(username: String, password: String, requestToken: String)
     case createSession(requestToken: String)
 
+    var sessionPolicy: APIRouteSessionPolicy { .publicDomain }
     var method: HTTPMethod {
         switch self {
         case .generateToken:
             return .get
-        case .validateUser:
-            return .post
-        case .createSession:
+        case .validateUser, .createSession:
             return .post
         }
     }
-    
-    var sessionPolicy: APIRouteSessionPolicy { .publicDomain }
     
     func asURLRequest() throws -> URLRequest {
         let path: String

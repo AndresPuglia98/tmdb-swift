@@ -12,45 +12,47 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     
     var genresToShow: [Genre] = []
-    
     var moviesWithGenreId: [UICollectionView: Int] = [:]
-    var movieLists: [Int: [Movie]] = [:]
+    var movieListsToShow: [Int: [Movie]] = [:]
     var selectedMovie: Movie!
     let moviesPerRow: Int = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonAction))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(.black)
         
         moviesTableView.dataSource = self
         moviesTableView.register(UINib(nibName: MoviesTableViewCell.identifier, bundle: nil),forCellReuseIdentifier: MoviesTableViewCell.identifier)
         
-        moviesTableView.reloadData()
-        
-        APIClient.shared.fetchGenres { (result: Result<[Genre], Error>) in
-            switch result {
-            case .success(let genres):
-                for genre in genres {
-                    if Constants.APIConstants.kGenresAtHomePage.contains(genre.name) {
-                        self.genresToShow.append(genre)
-                        APIClient.shared.fetchMoviesWithGenre(genreIdsArray: [String(genre.id)], page: 1) { (result: Result<[Movie], Error>) in
-                            switch result {
-                            case .success(let movies):
-                                self.movieLists[genre.id] = movies
-                                self.moviesTableView.reloadData()
-                            case .failure(let error):
-                                print(error)
-                            }
+        fetchContent()
+    }
+    
+    func fetchContent() -> Void {
+        APIClient.shared.fetchGenres(onCompletion: handleFetchGenresResponse)
+    }
+    
+    func handleFetchGenresResponse(result: Result<[Genre], Error>) -> Void {
+        switch result {
+        case .success(let genres):
+            for genre in genres {
+                if Constants.APIConstants.kGenresAtHomePage.contains(genre.name) {
+                    self.genresToShow.append(genre)
+                    APIClient.shared.fetchMoviesWithGenre(genreIdsArray: [String(genre.id)], page: 1) { (result: Result<[Movie], Error>) in
+                        switch result {
+                        case .success(let movies):
+                            self.movieListsToShow[genre.id] = movies
+                            self.moviesTableView.reloadData()
+                        case .failure(let error):
+                            print(error)
                         }
                     }
                 }
-            case .failure(let error):
-                print(error)
             }
+        case .failure(let error):
+            print(error)
         }
     }
-    
-    
     
     @objc func logoutButtonAction(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "sessionId")
@@ -83,7 +85,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let indexRow = moviesWithGenreId[collectionView]!
-        let movies = movieLists[genresToShow[indexRow].id]
+        let movies = movieListsToShow[genresToShow[indexRow].id]
         self.selectedMovie = movies?[indexPath.row]
         self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
     }
@@ -106,7 +108,7 @@ extension HomeViewController: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
             let indexRow = moviesWithGenreId[collectionView]!
-            let movies = movieLists[genresToShow[indexRow].id]
+            let movies = movieListsToShow[genresToShow[indexRow].id]
             cell.configure(posterPath: (movies?[indexPath.row].posterPath) ?? "")
             return cell
         }

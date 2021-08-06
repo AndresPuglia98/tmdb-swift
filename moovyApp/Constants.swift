@@ -30,6 +30,8 @@ struct Constants {
     
     struct DefaultTexts {
         static let kDefaultTitle = "Title not available"
-        static let kDefaultOverview = "Description not available"
+        static let kDefaultTagline = "Tagline not available"
+        static let kDefaultStatus = "Status not available"
+        static let kDefaultReleaseDate = "Release date not available"
     }
 }

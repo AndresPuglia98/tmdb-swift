@@ -11,10 +11,26 @@ import Alamofire
 enum MovieListRoute: APIRoute {
     case fetchMoviesWithGenre(genreIdsArray: [String], page: Int)
     case searchMovie(movieName: String)
-
-    var method: HTTPMethod { .get }
+    case fetchFavoriteMovies
+    case addFavoriteMovie(movieId: Int)
     
-    var sessionPolicy: APIRouteSessionPolicy { .publicDomain }
+    var sessionPolicy: APIRouteSessionPolicy {
+        switch self {
+        case .fetchMoviesWithGenre, .searchMovie:
+            return .publicDomain
+        case .fetchFavoriteMovies, .addFavoriteMovie:
+            return .privateDomain
+        }
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .fetchMoviesWithGenre, .searchMovie, .fetchFavoriteMovies:
+            return .get
+        case .addFavoriteMovie:
+            return .post
+        }
+    }
     
     func asURLRequest() throws -> URLRequest {
         let path: String
@@ -27,10 +43,24 @@ enum MovieListRoute: APIRoute {
                 "with_genres": genreIdsArray.joined(separator: ","),
                 "page": page
             ]
+            
         case .searchMovie(let movieName):
             path = "/search/movie"
-            params = ["query" : movieName]
+            params = ["query": movieName]
+            
+        case .fetchFavoriteMovies:
+            path = "/account/{account_id}/favorite/movies"
+            params = [:]
+        
+        case .addFavoriteMovie(let movieId):
+            path = "/account/{account_id}/favorite"
+            params = [
+                "media_type": "movie",
+                "media_id": movieId,
+                "favorite": true
+            ]
         }
+        
         return try self.encoded(path: path, params: params)
     }
 }

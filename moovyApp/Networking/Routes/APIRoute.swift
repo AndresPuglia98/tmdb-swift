@@ -37,12 +37,12 @@ extension APIRoute {
             switch self.method {
             case .get, .delete, .patch:
                 if sessionPolicy == .privateDomain {
-                    params["session_id"] = "" //SESSION ID
+                    params["session_id"] = UserDefaults.standard.object(forKey: "sessionId")
                 }
             default:
                 var urlComponents = URLComponents(string: baseURL + encodedPath)!
                 if sessionPolicy == .privateDomain {
-                    urlComponents.queryItems?.append(URLQueryItem(name: "session_id", value: "" /* SESSION ID */))
+                    urlComponents.queryItems?.append(URLQueryItem(name: "session_id", value: UserDefaults.standard.object(forKey: "sessionId") as? String))
                 }
                 url = try urlComponents.asURL()
         }
