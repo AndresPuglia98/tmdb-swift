@@ -14,6 +14,7 @@ class MoviesByGenreViewController: UIViewController {
     @IBOutlet weak var moviesByGenreTableView: UITableView!
     
     var selectedGenre: Genre!
+    var selectedMovie: Movie!
     var moviesByGenre: [Movie] = []
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class MoviesByGenreViewController: UIViewController {
         
         genreNameLabel.text = selectedGenre.name
         
+        moviesByGenreTableView.delegate = self
         moviesByGenreTableView.dataSource = self
         moviesByGenreTableView.register(UINib(nibName: PresentMovieTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PresentMovieTableViewCell.identifier)
         
@@ -39,6 +41,20 @@ class MoviesByGenreViewController: UIViewController {
 
         case .failure(let error):
             print(error)
+        }
+    }
+}
+
+extension MoviesByGenreViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedMovie = moviesByGenre[indexPath.row]
+        self.performSegue(withIdentifier: "ShowMovieDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowMovieDetailSegue" {
+            let movieDetailsViewController = segue.destination as! MovieDetailsViewController
+            movieDetailsViewController.selectedMovie = self.selectedMovie
         }
     }
 }
